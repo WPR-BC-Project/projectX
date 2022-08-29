@@ -5,7 +5,7 @@ function submitIssue(e) {
   const severity = getInputValue("issueSeverity");
   const assignedTo = getInputValue("issueAssignedTo");
   const id = Math.floor(Math.random() * 100000000) + "";
-  
+
   const status = "Open";
 
   // /Create issue using Javascript DOM module
