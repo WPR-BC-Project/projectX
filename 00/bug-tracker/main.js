@@ -1,6 +1,7 @@
 function submitIssue(e) {
-  
+
   const getInputValue = (id) => document.getElementById(id).value;
+  
   const description = getInputValue("issueDescription");
   const severity = getInputValue("issueSeverity");
   const assignedTo = getInputValue("issueAssignedTo");
@@ -31,15 +32,17 @@ function submitIssue(e) {
     if (localStorage.getItem("issues")) {
       issues = JSON.parse(localStorage.getItem("issues"));
     }
+    
 
     issues.push(issue);
     localStorage.setItem("issues", JSON.stringify(issues));
 
     fetchIssues();
+
   }
 }
 
-// Resolve issue
+// end function of fetching issue
 const closeIssue = (id) => {
   const issues = JSON.parse(localStorage.getItem("issues"));
   const currentIssue = issues.find((issue) => issue.id == id);
@@ -49,7 +52,18 @@ const closeIssue = (id) => {
   fetchIssues();
 };
 
-//Backlog Issue
+// Resolved issue
+
+//
+const backLogIssue = (id) => {
+  const issues = JSON.parse(localStorage.getItem("issues"));
+  const remainingIssues = issues.filter((issue) => issue.id != id);
+  currentIssue.description = `<b>Backlog</b>`;
+  localStorage.setItem("issues", JSON.stringify(remainingIssues));
+  fetchIssues();
+};
+
+//Delete Issue
 const deleteIssue = (id) => {
   const issues = JSON.parse(localStorage.getItem("issues"));
   const remainingIssues = issues.filter((issue) => issue.id != id);
