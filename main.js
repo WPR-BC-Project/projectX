@@ -204,6 +204,7 @@ const fetchIssues = () => {
   const issues = JSON.parse(localStorage.getItem("issues"));
   const issuesList = document.getElementById("issuesList");
   issuesList.innerHTML = "";
+  const d = new Date();
 
   for (var i = 0; i < issues.length; i++) {
     const { id, description, severity, assignedTo, status } = issues[i];
@@ -212,8 +213,10 @@ const fetchIssues = () => {
       <h6>Issue ID: ${id} </h6>
       <p><span class="label label-info"> ${status} </span></p>
       <h3> ${description} </h3>
-      <p><span class="glyphicon glyphicon-time"></span> ${severity}</p>
+      <p><span class="glyphicon "></span> Priority :  ${severity}</p>
       <p><span class="glyphicon glyphicon-user"></span> ${assignedTo}</p>
+      <p><span class="glyphicon glyphicon-time"></span> ${d}</p>
+
       <button onclick="closeIssue(${id})" class="btn btn-warning">Close</button>
       <button onclick="deleteIssue(${id})" class="btn btn-danger">Delete</button>
       </div>`;
