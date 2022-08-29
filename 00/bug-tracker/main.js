@@ -5,16 +5,124 @@ function submitIssue(e) {
   const severity = getInputValue("issueSeverity");
   const assignedTo = getInputValue("issueAssignedTo");
   const id = Math.floor(Math.random() * 100000000) + "";
-  const openList = document.getElementById("progress-issue");
-  const backLogList = document.getElementById("backlog-issue");
-
+  
   const status = "Open";
-  // Checking type of progress its been added to
-  if (openList) {
-    status = "Overdue";
-  } else if (backLogList) {
-    status = "In-Progress";
-  } else status;
+
+  // /Create issue using Javascript DOM module
+  if (description.length == 0 || assignedTo.length == 0) {
+    //alert about open fields
+    alert("Please fill all fields with required data.");
+
+    //Buttom Add issue
+    document.getElementById("add-issue").setAttribute("data-toggle", "modal");
+    document
+      .getElementById("add-issue")
+      .setAttribute("data-target", "#emptyField");
+
+    //Add issue
+    document
+      .getElementById("backlog-issue")
+      .setAttribute("data-toggle", "modal");
+    document
+      .getElementById("backlog-issue")
+      .setAttribute("data-target", "#emptyField");
+
+    //Add issue
+    document.getElementById("add-issue").setAttribute("data-toggle", "modal");
+    document
+      .getElementById("progress-issue")
+      .setAttribute("data-target", "#emptyField");
+  } else {
+    //Else remove attributes
+    document
+      .getElementById("add-issue")
+      .removeAttribute("data-toggle", "modal");
+
+    document
+      .getElementById("add-issue")
+      .removeAttribute("data-target", "#emptyField");
+
+    const issue = { id, description, severity, assignedTo, status };
+    let issues = [];
+
+    if (localStorage.getItem("issues")) {
+      issues = JSON.parse(localStorage.getItem("issues"));
+    }
+
+    issues.push(issue);
+    localStorage.setItem("issues", JSON.stringify(issues));
+
+    fetchIssues();
+  }
+}
+
+function progressIssue(e) {
+  const getInputValue = (id) => document.getElementById(id).value;
+
+  const description = getInputValue("issueDescription");
+  const severity = getInputValue("issueSeverity");
+  const assignedTo = getInputValue("issueAssignedTo");
+  const id = Math.floor(Math.random() * 100000000) + "";
+
+  const status = "In-Progress";
+
+  // /Create issue using Javascript DOM module
+  if (description.length == 0 || assignedTo.length == 0) {
+    //alert about open fields
+    alert("Please fill all fields with required data.");
+
+    //Buttom Add issue
+    document.getElementById("add-issue").setAttribute("data-toggle", "modal");
+    document
+      .getElementById("add-issue")
+      .setAttribute("data-target", "#emptyField");
+
+    //Add issue
+    document
+      .getElementById("backlog-issue")
+      .setAttribute("data-toggle", "modal");
+    document
+      .getElementById("backlog-issue")
+      .setAttribute("data-target", "#emptyField");
+
+    //Add issue
+    document.getElementById("add-issue").setAttribute("data-toggle", "modal");
+    document
+      .getElementById("progress-issue")
+      .setAttribute("data-target", "#emptyField");
+  } else {
+    //Else remove attributes
+    document
+      .getElementById("add-issue")
+      .removeAttribute("data-toggle", "modal");
+
+    document
+      .getElementById("add-issue")
+      .removeAttribute("data-target", "#emptyField");
+
+    const issue = { id, description, severity, assignedTo, status };
+    let issues = [];
+
+    if (localStorage.getItem("issues")) {
+      issues = JSON.parse(localStorage.getItem("issues"));
+    }
+
+    issues.push(issue);
+    localStorage.setItem("issues", JSON.stringify(issues));
+
+    fetchIssues();
+  }
+}
+
+function backlogIssue(e) {
+  const getInputValue = (id) => document.getElementById(id).value;
+
+  const description = getInputValue("issueDescription");
+  const severity = getInputValue("issueSeverity");
+  const assignedTo = getInputValue("issueAssignedTo");
+  const id = Math.floor(Math.random() * 100000000) + "";
+
+  const status = "Back-log";
 
   // /Create issue using Javascript DOM module
   if (description.length == 0 || assignedTo.length == 0) {
