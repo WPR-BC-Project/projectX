@@ -182,7 +182,6 @@ const closeIssue = (id) => {
   fetchIssues();
 };
 
-//
 const backLogIssue = (id) => {
   const issues = JSON.parse(localStorage.getItem("issues"));
   const remainingIssues = issues.filter((issue) => issue.id != id);
