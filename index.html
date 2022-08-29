@@ -9,6 +9,7 @@
   </head>
   <body>
     
+   <div class="Main">
     <div class="Open">
       <h2>Open</h2>
     </div>
@@ -18,24 +19,32 @@
     <div class="Overdue">
       <h2>Overdue</h2>
     </div>
+  </div> 
 
     <script>
-      let New1 = document.createElement("div");
-      New1.className = 'Ticket';
-      New1.innerHTML = "<h3>Not lauching</h3><p>2013/03/23</p><h5>Description</h5><p>its fucked</p><p><strong>Found by: </strong>Steve</p><p><strong>Assigned to:</strong> Some poor sod</p>";
-      let to = document.getElementsByClassName('Open')[0];
-      to.appendChild(New1);
-
       let ticket = JSON.parse(localStorage.getItem('Tickets'));
 
-      for (let i = 0; i <ticket.length; i++) {
+      for (let i = 0; i < ticket.length; i++) {
         let New = document.createElement("div");
         New.className = 'Ticket'
          
         console.log(ticket[i]);
 
-        New.innerHTML = `<h3>${ticket[i].Summary}</h3><p>${ticket[i].status}Date</p><h5>Description</h5><p>${ticket[i].Description}</p><p><strong>Found by: </strong>${ticket[i].Identfied}</p><p><strong>Assigned to:</strong> ${ticket[i].Assigned}</p>`;
-        let to = document.getElementsByClassName('Open')[0];
+        New.innerHTML = `<h3>${ticket[i].Summary}</h3><p>${ticket[i].Time}</p><h5>Description</h5><p>${ticket[i].Description}</p><p><strong>Found by: </strong>${ticket[i].Identfied}</p><p><strong>Assigned to:</strong> ${ticket[i].Assigned}</p>`;
+        
+        let to;
+        switch (ticket[i].status) { 
+            case 'Open':
+              to = document.getElementsByClassName('Open')[0];
+            break;
+            case 'Resolved':
+             to = document.getElementsByClassName('Resolved')[0];
+            break;
+            case 'Overdue':
+            to = document.getElementsByClassName('Overdue')[0];
+            break;
+        }
+        
         to.appendChild(New);
       }
 

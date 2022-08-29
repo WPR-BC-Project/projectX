@@ -14,7 +14,11 @@
         <textarea rows="" cols="" id="Description" ></textarea>
         <input type="text" name="" id="Identfied">
         <input type="text" name="" id="Assigned">
-        <input type="text" name="" id="Status">
+        <select name="StatusSelect" id="Status">
+          <option value="Open">Open</option>
+          <option value="Overdue">Overdue</option>
+          <option value="Resolved">Resolved</option>
+        </select>
         <button onclick="Add()">Add Bug</button>
     </div>
   </body>
@@ -26,14 +30,15 @@
         let Assigned = document.getElementById("Assigned").value;
         let Status = document.getElementById("Status").value;
         let Identfied = document.getElementById("Identfied").value;
+        let Date = new Date();
 
         let Ticket = {
             Summary: Summary,
             Description: Description,
             Assigned: Assigned,
-            status: status,
+            status: Status,
             Identfied: Identfied,
-            Time : new Date().getDate().toString(),
+            Time : new Date().getDate(),
         }
     
        let arrTicket = new Array();

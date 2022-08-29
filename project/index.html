@@ -4,7 +4,7 @@
     <link rel="icon" type="image/x-icon" href="./assets/favicon.ico" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="styles.css">
   </head>
 
   <body>
@@ -24,7 +24,25 @@
       <input type="text" id="Name">
       <label for="Password">Enter Password:</label>
       <input type="password" id="Password">
-    <input id="LoginButton" type="button" value="Login">
+    <input id="LoginButton" type="button" value="Login" onclick="SignIn()">
     </div>
+
+    <script>
+      
+      function SignIn(){
+
+      let name = document.getElementById("Name").value;
+      let password = document.getElementById("Password").value;
+      
+      if (name == "Admin" && password == "12345") {
+        alert('Sign-in successful'); 
+        //route to bug tracker
+      }else{
+        alert('User name doesnt exist');
+      }
+
+      }
+    </script>
+
   </body>
 </html>
