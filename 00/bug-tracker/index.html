@@ -37,6 +37,7 @@
             </select>
           </div>
           <div class="form-group">
+            <!-- Assigned to user : Add user -->
             <label for="issueAssignedTo">Assigned To</label>
             <input
               type="text"
@@ -45,6 +46,7 @@
               placeholder="Enter responsible ..."
             />
           </div>
+          <!-- Add Issue -->
           <button
             id="add-issue"
             onclick="submitIssue()"
@@ -52,22 +54,30 @@
           >
             Add Issue
           </button>
+
+          <!-- Open Isssue -->
           <button
             id="progress-issue"
             onclick="submitIssue()"
             class="btn btn-primary"
           >
-            In-Progress
+            In Progress
           </button>
+
+          <!-- Overdue nIssue -->
           <button
             id="backlog-issue"
             onclick="submitIssue()"
             class="btn btn-primary"
           >
-            Add to Backlog
+          Backlog
+            <!-- Add to Backlog -->
           </button>
         </form>
       </div>
+
+      <hr />
+      <!-- Print Issue Bug Tracker  -->
       <div class="col-lg-12">
         <div id="issuesList"></div>
       </div>
@@ -85,7 +95,8 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="emptyFieldLabel">Invalid Input!</h5> 
+            <h5 class="modal-title" id="emptyFieldLabel">Invalid Input!</h5>
+            <!-- If you press close it will close the issue  -->
             <button
               type="button"
               class="close"
@@ -95,10 +106,12 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
+          <!-- Error message for the modal -->
           <div class="modal-body">
             Please provide the desciption of the issue and also the person name
             who you want to assign the issue.
           </div>
+
           <div class="modal-footer">
             <button
               type="button"
@@ -112,17 +125,9 @@
       </div>
     </div>
 
-    <script
-      src="https://code.jquery.com/jquery-3.1.1.min.js"
-      integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <!-- Latest compiled and minified JavaScript -->
-    <script
-      src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-      integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="main.js"></script>
   </body>
 </html>
